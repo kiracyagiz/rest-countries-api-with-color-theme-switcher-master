@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center">COUNTRY</h1>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        name=""
+        id="myInput"
+        placeholder="Search for countries..."
+      />
+    </div>
+
+    <div class="card">
+      <div class="kral">
+        <div class="image"></div>
+        <div class="content">
+          <div class="title"></div>
+          <div class="text"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      fetch("./data.json")
+        .then(async (response) => {
+          const data = await response.json();
+
+          createCard(data);
+
+          const searchInput = document.getElementById("myInput");
+          searchInput.addEventListener("input", function () {
+            const filteredData = data.filter((country) =>
+              country.name
+                .toLowerCase()
+                .includes(searchInput.value.toLowerCase())
+            );
+            updateCard(filteredData);
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      function createCard(data) {
+        var cardElement = document.querySelector(".card");
+
+        for (var i = 0; i < data.length; i++) {
+          var imageElement =
+            '<img src="' + data[i].flags.png + '" alt="' + "" + '">';
+          var titleElement = "<p>" + data[i].subregion + "</p>";
+          var textElement = "<h1>" + data[i].name + "</h1>";
+
+          var newCardElement = document.createElement("div");
+          newCardElement.classList.add("card");
+          newCardElement.innerHTML =
+            '<div class="kral">' +
+            '<div class="image">' +
+            imageElement +
+            "</div>" +
+            '<div class="content">' +
+            '<div class="title">' +
+            titleElement +
+            "</div>" +
+            '<div class="text" id="denemee">' +
+            textElement +
+            "</div>" +
+            "</div>" +
+            "</div>";
+
+    
+
+          cardElement.appendChild(newCardElement);
+        }
+      }
+
+      function updateCard(filteredData) {
+        var cardElement = document.querySelector(".card");
+        cardElement.innerHTML = "";
+
+        for (var i = 0; i < filteredData.length; i++) {
+          var imageElement =
+            '<img src="' + filteredData[i].flags.png + '" alt="' + "" + '">';
+          var titleElement = "<p>" + filteredData[i].subregion + "</p>";
+          var textElement = "<h1>" + filteredData[i].name + "</h1>";
+
+          var newCardElement = document.createElement("div");
+          newCardElement.classList.add("card");
+          newCardElement.innerHTML =
+            '<div class="kral">' +
+            '<div class="image">' +
+            imageElement +
+            "</div>" +
+            '<div class="content">' +
+            '<div class="title">' +
+            titleElement +
+            "</div>" +
+            '<div class="text" id="denemee">' +
+            textElement +
+            "</div>" +
+            "</div>" +
+            "</div>";
+
+          cardElement.appendChild(newCardElement);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+
+
+    body
+    {
+        margin-right: 10%;
+        margin-left: 10%;
+        background-color: #efeae3;
+        overflow-x: hidden;
+
+    }
+
+    .search-bar
+    {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+    }
+
+    body img
+    {
+        width: 250px;
+    }
+
+    .card
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .card img
+    {
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+
+    .kral  
+    { 
+
+        box-sizing: border-box;
+        box-shadow: 50px;
+        background-color: #fff;
+        padding-bottom: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 3px grey;
+        transition: transform 1s;
+        
+
+    }
+
+
+    #myInput
+    {
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        width: 800px;
+    }
+
+    
+    .kral:hover
+    {
+        transform: scale(1.2);
+       
+
+    }
+
+    @media only screen and (max-width:550px) {
+        .card
+        {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr;
+          justify-content: center;
+          align-items: center;
+          margin-left: 5%;
+
+        } 
+
+
+        #myInput
+        {
+            width: 200px;
+            height: 40px;
+            overflow-x: hidden;
+        }
+      }
